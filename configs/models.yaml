@@ -1,0 +1,30 @@
+# Paper configuration; credentials come from environment variables.
+api:
+  rpm: 40
+  max_concurrency: 4
+  timeout_s: 300
+  max_retries: 4
+  repair_attempts: 2
+  breaker_threshold: 5
+  breaker_cooldown_s: 30
+  breaker_max_wait_s: 1800
+roles:
+  proposer_xl:
+    model: Intern-S2-Preview-397B
+    max_tokens: 32000
+    timeout_s: 900
+    max_retries: 1
+    repair_overrides:
+      extra_body:
+        thinking:
+          type: disabled
+      max_tokens: 4000
+  decider:
+    model: Intern-S2-Preview-397B
+    max_tokens: 6000
+    timeout_s: 180
+    repair_overrides:
+      extra_body:
+        thinking:
+          type: disabled
+      max_tokens: 1024

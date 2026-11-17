@@ -1,0 +1,26 @@
+# Local environments and Python builds
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+# Runtime output and analysis annotations
+runs/
+outputs/
+reviews/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+# Credentials and local provider settings
+.env
+.env.*
+!.env.example
+api-key*
+*-key.txt
+*.pem
+*.key
+.DS_Store

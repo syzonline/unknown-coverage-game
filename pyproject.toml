@@ -1,0 +1,22 @@
+[project]
+name = "unknown-coverage-game"
+version = "0.1.0"
+description = "Executable opponent-model evolution under unknown model coverage"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "scipy>=1.11", "openai>=1.40", "pyyaml>=6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = ["live: hits the real LLM API (run with BSI_LIVE=1)"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["bsi*", "p2_opponent*"]

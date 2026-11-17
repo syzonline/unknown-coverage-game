@@ -1,0 +1,29 @@
+# Paper configuration; credentials come from environment variables.
+name: controls
+split: dev
+games:
+- rps3
+- hideseek5
+families:
+- wsls
+- fictitious
+- reactive
+- lose_k_shift
+- react2
+- seq_br
+- block_drift
+n_params: 2
+seeds:
+- 0
+- 1
+horizon: 150
+max_fallback_rate: 0.2
+max_job_attempts: 3
+sandbox_threads: 2
+llm_threads: 2
+methods:
+  menu_all_e30:
+    base: b2_static
+    library: seed
+    explore:
+      rate: 0.3

@@ -1,0 +1,77 @@
+# Paper configuration; credentials come from environment variables.
+name: deepseek_full
+split: dev
+games:
+- rps3
+- hideseek5
+families:
+- wsls
+- fictitious
+- reactive
+- lose_k_shift
+- react2
+- seq_br
+- block_drift
+n_params: 2
+horizon: 150
+proposer: proposer_xl
+decider: decider
+max_fallback_rate: 0.2
+max_job_attempts: 3
+seeds:
+- 0
+- 1
+sandbox_threads: 2
+llm_threads: 4
+methods:
+  v6_full_e30:
+    base: menu_choice
+    history_mode: full
+    archive: true
+    heredity: true
+    residuals: true
+    n_variation: 2
+    decision_at:
+    - 10
+    - 24
+    - 38
+    - 52
+    - 66
+    - 80
+    - 94
+    - 108
+    - 122
+    - 136
+    explore:
+      rate: 0.3
+    k_active: 3
+llm:
+  rpm: 40
+  max_concurrency: 4
+  timeout_s: 300
+  max_retries: 4
+  repair_attempts: 2
+  breaker_threshold: 5
+  breaker_cooldown_s: 30
+  breaker_max_wait_s: 1800
+  tpm: 2500000
+  roles:
+    proposer_xl:
+      model: deepseek-v4.1-flash
+      max_tokens: 32000
+      timeout_s: 900
+      max_retries: 1
+      repair_overrides:
+        extra_body:
+          thinking:
+            type: disabled
+        max_tokens: 4000
+    decider:
+      model: deepseek-v4.1-flash
+      max_tokens: 6000
+      timeout_s: 180
+      repair_overrides:
+        extra_body:
+          thinking:
+            type: disabled
+        max_tokens: 1024
